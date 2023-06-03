@@ -3,10 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -27,6 +23,27 @@
 body {
   height: 100vh;
   font-family: "Rajdhani", sans-serif;
+  background-color: lavender;
+}
+
+header,
+footer {
+  padding: 20px;
+  background-color: slateblue;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+}
+
+header {
+  font-size: 40px;
+}
+
+footer {
+  font-size: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 h1,

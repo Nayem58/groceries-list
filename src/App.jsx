@@ -1,5 +1,14 @@
+import { BsFillTrash3Fill } from "react-icons/bs";
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+
 function App() {
-  return <h1>hello world</h1>;
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
