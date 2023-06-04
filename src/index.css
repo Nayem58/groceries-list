@@ -171,6 +171,7 @@ button {
         /* border: 1px solid slateblue; */
         background-color: #fff;
         color: red;
+        border-color: red;
       }
     }
   }

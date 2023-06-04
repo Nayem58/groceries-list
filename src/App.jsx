@@ -1,5 +1,7 @@
-import { BsFillTrash3Fill } from "react-icons/bs";
+import React from "react";
 import Header from "./layouts/Header";
+import Block from "./layouts/Block";
+import List from "./components/List";
 import Footer from "./layouts/Footer";
 import { useState } from "react";
 
@@ -38,38 +40,17 @@ function App() {
     <>
       <Header headerTxt="Grocery List" />
       <main>
-        <div className="py-50px">
-          <div className="container">
-            {items.length !== 0 ? (
-              <ul className="groceries-list">
-                {items.map((item) => {
-                  return (
-                    <li className="groceries-list__item" key={item.id}>
-                      <input
-                        className="checkbox"
-                        type="checkbox"
-                        id={item.item}
-                        onChange={() => handleChecked(item.id)}
-                        checked={item.checked}
-                      />
-                      <label className="label" htmlFor={item.item}>
-                        {item.item.toUpperCase()}
-                      </label>
-                      <button
-                        className="btn-delete"
-                        onClick={() => handleDelete(item.id)}
-                      >
-                        <BsFillTrash3Fill />
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <h1 className="text-center">Your List Is Empty</h1>
-            )}
-          </div>
-        </div>
+        <Block>
+          {items.length ? (
+            <List
+              items={items}
+              handleChecked={handleChecked}
+              handleDelete={handleDelete}
+            />
+          ) : (
+            <h1 className="text-center">Your List Is Empty</h1>
+          )}
+        </Block>
       </main>
       <Footer listCount={items.length} />
     </>
