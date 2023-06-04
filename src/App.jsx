@@ -30,14 +30,13 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    console.log(id);
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
   };
 
   return (
     <>
-      <Header />
+      <Header headerTxt="Grocery List" />
       <main>
         <div className="py-50px">
           <div className="container">
@@ -72,7 +71,7 @@ function App() {
           </div>
         </div>
       </main>
-      <Footer />
+      <Footer listCount={items.length} />
     </>
   );
 }
