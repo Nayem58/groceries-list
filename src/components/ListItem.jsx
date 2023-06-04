@@ -13,8 +13,12 @@ function ListItem({ item, handleChecked, handleDelete }) {
       <label className="label" htmlFor={item.item}>
         {item.item.toUpperCase()}
       </label>
-      <button className="btn btn--delete" onClick={() => handleDelete(item.id)}>
-        <BsFillTrash3Fill aria-label={`Delete: ${item.item}`} />
+      <button
+        className="btn btn--delete"
+        onClick={() => handleDelete(item.id)}
+        aria-label={`Delete: ${item.item}`}
+      >
+        <BsFillTrash3Fill />
       </button>
     </li>
   );
