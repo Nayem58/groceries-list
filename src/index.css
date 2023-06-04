@@ -78,7 +78,7 @@ h4,
 h5,
 h6 {
   color: slateblue;
-  font-size: 80px;
+  font-size: 30px;
   font-weight: 500;
 }
 
@@ -195,6 +195,7 @@ input[type="checkbox"] {
       background-color: red;
       border: 2px solid red;
       height: 100%;
+      font-size: 20px;
 
       &:hover {
         background-color: #fff;

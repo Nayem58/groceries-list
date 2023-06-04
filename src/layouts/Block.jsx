@@ -1,5 +1,3 @@
-import React from "react";
-
 function Block({ children }) {
   return (
     <div className="py-50px">
