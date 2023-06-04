@@ -23,24 +23,52 @@
 body {
   height: 100vh;
   font-family: "Rajdhani", sans-serif;
-  background-color: lavender;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header,
 footer {
-  padding: 20px;
   background-color: slateblue;
   color: #fff;
   text-align: center;
   font-weight: 700;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid slateblue;
 }
 
 header {
+  padding: 20px;
   font-size: 40px;
 }
 
 footer {
-  font-size: 20px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+footer p {
+  font-size: 16px;
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid slateblue;
+  border-right: 1px solid slateblue;
 }
 
 h1,
@@ -84,12 +112,8 @@ input[type="checkbox"] {
   border: 1px solid slateblue;
 }
 
-button {
-  padding: 10px 5px;
-  font-size: 20px;
-  background-color: slateblue;
-  border: 2px solid slateblue;
-  color: #fff;
+.btn {
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -136,7 +160,8 @@ button {
 }
 
 .groceries-list {
-  max-width: 400px;
+  width: 100%;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 
@@ -155,7 +180,7 @@ button {
 
     .label {
       border: 1px solid slateblue;
-      background-color: #fff;
+      background-color: lavender;
       height: 100%;
       border-radius: 2px;
       display: flex;
@@ -163,15 +188,17 @@ button {
       padding: 5px 10px;
     }
 
-    .btn-delete {
+    .btn--delete {
       border-radius: 2px;
       transition: all 0.4s;
+      color: #fff;
+      background-color: red;
+      border: 2px solid red;
+      height: 100%;
 
       &:hover {
-        /* border: 1px solid slateblue; */
         background-color: #fff;
         color: red;
-        border-color: red;
       }
     }
   }
