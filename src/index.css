@@ -215,14 +215,14 @@ input[type="checkbox"] {
       border-radius: 2px;
       transition: all 0.4s;
       color: #fff;
-      background-color: red;
-      border: 2px solid red;
+      background-color: crimson;
+      border: 2px solid crimson;
       height: 100%;
       font-size: 20px;
 
       &:hover {
         background-color: #fff;
-        color: red;
+        color: crimson;
       }
     }
   }
