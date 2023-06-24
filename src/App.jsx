@@ -1,13 +1,19 @@
 import Header from "./layouts/Header";
+
 import Block from "./layouts/Block";
+
 import Form from "./components/Form";
 import List from "./components/List";
+
 import Footer from "./layouts/Footer";
+
 import { useState } from "react";
 
 function App() {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("shoppingList"))
+      ? JSON.parse(localStorage.getItem("shoppingList"))
+      : {}
   );
 
   const setAndSaveItems = (newItems) => {
@@ -27,6 +33,7 @@ function App() {
     setAndSaveItems(listItems);
   };
 
+  // Form
   const [newInput, setNewInput] = useState("");
 
   const addItem = (item) => {
@@ -43,10 +50,9 @@ function App() {
 
   const handleSetNewInput = (e) => {
     e.preventDefault();
-
     if (!newInput) return; // if blank or undefined is submitted, the function will exit out
     addItem(newInput);
-    setNewInput("");
+    setNewInput(""); // on submit, the value will be reset as blank again
   };
 
   return (
