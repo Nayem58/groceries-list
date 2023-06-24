@@ -1,11 +1,6 @@
-// icons
 import { BsFillTrash3Fill } from "react-icons/bs";
-
-// layouts
 import Header from "./layouts/Header";
 import Footer from "./layouts/Footer";
-
-// useState
 import { useState } from "react";
 
 function App() {
@@ -31,13 +26,12 @@ function App() {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
-
     setItems(listItems);
   };
 
   const handleDelete = (id) => {
+    console.log(id);
     const listItems = items.filter((item) => item.id !== id);
-
     setItems(listItems);
   };
 
@@ -47,7 +41,7 @@ function App() {
       <main>
         <div className="py-50px">
           <div className="container">
-            {items.length ? (
+            {items.length !== 0 ? (
               <ul className="groceries-list">
                 {items.map((item) => {
                   return (
@@ -63,7 +57,7 @@ function App() {
                         {item.item.toUpperCase()}
                       </label>
                       <button
-                        className="btn btn--delete"
+                        className="btn-delete"
                         onClick={() => handleDelete(item.id)}
                       >
                         <BsFillTrash3Fill />
@@ -73,7 +67,7 @@ function App() {
                 })}
               </ul>
             ) : (
-              <p className="text-center">Your List Is Empty</p>
+              <h1 className="text-center">Your List Is Empty</h1>
             )}
           </div>
         </div>
