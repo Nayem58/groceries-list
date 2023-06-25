@@ -1,24 +1,48 @@
+// layouts
 import Header from "./layouts/Header";
-
 import Block from "./layouts/Block";
-
-import Form from "./components/Form";
 import List from "./components/List";
-
+import Form from "./components/Form";
+import Search from "./components/Search";
 import Footer from "./layouts/Footer";
 
+// useState
 import { useState } from "react";
 
 function App() {
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("shoppingList"))
-      ? JSON.parse(localStorage.getItem("shoppingList"))
-      : {}
-  );
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      item: "sauce",
+      checked: false,
+    },
+    {
+      id: 2,
+      item: "coke",
+      checked: false,
+    },
+    {
+      id: 3,
+      item: "noodles",
+      checked: false,
+    },
+  ]);
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
-    localStorage.setItem("shoppingList", JSON.stringify(newItems));
+    localStorage.setItem("groceryList", JSON.stringify(newItems));
+    console.log(newItems);
+  };
+
+  const addItem = (newItem) => {
+    const createNewItem = {
+      id: items.length ? items[items.length - 1].id + 1 : 1,
+      item: newItem,
+      checked: false,
+    };
+
+    const listItems = [...items, createNewItem];
+    setAndSaveItems(listItems);
   };
 
   const handleChecked = (id) => {
@@ -33,26 +57,20 @@ function App() {
     setAndSaveItems(listItems);
   };
 
-  // Form
+  // search item
+  const [search, setSearch] = useState("");
+
+  // adding new items
   const [newInput, setNewInput] = useState("");
-
-  const addItem = (item) => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1;
-    const addNewItem = {
-      id,
-      checked: false,
-      item,
-    };
-
-    const listItems = [...items, addNewItem];
-    setAndSaveItems(listItems);
-  };
 
   const handleSetNewInput = (e) => {
     e.preventDefault();
-    if (!newInput) return; // if blank or undefined is submitted, the function will exit out
+    if (!newInput) return;
+
+    // add new item
     addItem(newInput);
-    setNewInput(""); // on submit, the value will be reset as blank again
+
+    setNewInput("");
   };
 
   return (
@@ -60,20 +78,22 @@ function App() {
       <Header headerTxt="Grocery List" />
       <main>
         <Block>
+          <Search search={search} setSearch={setSearch} />
           <Form
-            className="mb-20px"
             newInput={newInput}
             setNewInput={setNewInput}
             handleSetNewInput={handleSetNewInput}
           />
           {items.length ? (
             <List
-              items={items}
+              items={items.filter((item) =>
+                item.item.toLowerCase().includes(search.toLowerCase())
+              )}
               handleChecked={handleChecked}
               handleDelete={handleDelete}
             />
           ) : (
-            <h1 className="text-center">Your List Is Empty</h1>
+            <div className="text-center msg">Your List Is Empty</div>
           )}
         </Block>
       </main>

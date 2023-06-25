@@ -1,3 +1,4 @@
+// icons
 import { BsFillTrash3Fill } from "react-icons/bs";
 
 function ListItem({ item, handleChecked, handleDelete }) {

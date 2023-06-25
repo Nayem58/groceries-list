@@ -1,3 +1,5 @@
+import React from "react";
+
 function Header({ headerTxt }) {
   return <header>{headerTxt}</header>;
 }
