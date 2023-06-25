@@ -66,7 +66,9 @@ function App() {
       <Header headerTxt="Grocery List" />
       <main>
         <Block>
-          <Search search={search} setSearch={setSearch} />
+          {items.length ? (
+            <Search search={search} setSearch={setSearch} />
+          ) : null}
           <Form
             newInput={newInput}
             setNewInput={setNewInput}
