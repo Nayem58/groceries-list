@@ -8,6 +8,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --color-white: white;
+  --color-primary: slateblue;
+  --color-secondary: lavender;
+  --color-delete: crimson;
 }
 
 * {
@@ -16,13 +21,14 @@
   box-sizing: border-box;
 }
 
-*:focus {
-  outline: none;
+html {
+  font-size: 62.5%;
 }
 
 body {
   height: 100vh;
   font-family: "Rajdhani", sans-serif;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,29 +43,28 @@ body {
 
 header,
 footer {
-  background-color: slateblue;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-white);
   text-align: center;
   font-weight: 700;
   width: 100%;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid slateblue;
+  border: 1px solid var(--color-primary);
 }
 
 header {
   padding: 20px;
-  font-size: 40px;
+  font-size: 4rem;
 }
 
 footer {
   padding: 10px;
-  font-size: 12px;
 }
 
 footer p {
-  font-size: 16px;
+  font-size: 1.4rem;
 }
 
 main {
@@ -67,8 +72,8 @@ main {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  border-left: 1px solid slateblue;
-  border-right: 1px solid slateblue;
+  border-left: 1px solid var(--color-primary);
+  border-right: 1px solid var(--color-primary);
 }
 
 h1,
@@ -77,8 +82,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: slateblue;
-  font-size: 30px;
+  color: var(--color-primary);
+  font-size: 3rem;
   font-weight: 500;
 }
 
@@ -93,8 +98,8 @@ ul {
 }
 
 li {
-  color: slateblue;
-  font-size: 20px;
+  color: var(--color-primary);
+  font-size: 2rem;
 }
 
 li + li {
@@ -102,19 +107,52 @@ li + li {
 }
 
 input[type="text"] {
-  padding: 10px;
-  font-size: 20px;
-  border: 2px solid slateblue;
-  color: slateblue;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 2rem;
+  color: var(--color-primary);
+  border-radius: 5px;
 }
 
 input[type="checkbox"] {
-  border: 1px solid slateblue;
+  border: 1px solid var(--color-primary);
+}
+
+.checkbox:checked ~ label {
+  text-decoration: line-through;
 }
 
 .btn {
   padding: 10px;
   cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.4s;
+  color: var(--color-white);
+  border: 2px solid;
+  height: 100%;
+  font-size: 2rem;
+}
+
+.btn--delete {
+  background-color: var(--color-delete);
+  border-color: var(--color-delete);
+
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-delete);
+  }
+}
+
+.btn--add {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
 }
 
 .py-50px {
@@ -159,19 +197,19 @@ input[type="checkbox"] {
   margin-right: 10px;
 }
 
-.mt-20px {
+.mt-2rem {
   margin-top: 20px;
 }
 
-.mb-20px {
+.mb-2rem {
   margin-bottom: 20px;
 }
 
-.ml-20px {
+.ml-2rem {
   margin-left: 20px;
 }
 
-.mr-20px {
+.mr-2rem {
   margin-right: 20px;
 }
 
@@ -180,6 +218,52 @@ input[type="checkbox"] {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: auto 100px;
+    grid-gap: 20px;
+    align-items: end;
+
+    .input-group {
+      position: relative;
+      padding-top: 16px;
+
+      .label {
+        display: inline-block;
+        font-size: 1.6rem;
+        position: absolute;
+        left: 20px;
+        top: 0;
+        z-index: 1;
+        background-color: var(--color-white);
+        padding: 4px 10px;
+        color: var(--color-primary);
+      }
+
+      .input {
+        display: block;
+        position: relative;
+        z-index: 0;
+        border: 1px solid var(--color-primary);
+        width: 100%;
+
+        &::placeholder {
+          color: var(--color-secondary);
+        }
+      }
+    }
+
+    .btn--add {
+      height: calc(100% - 16px);
+      font-size: 3rem;
+    }
+  }
+}
+
+.add-item-form + .groceries-list,
+.add-item-form + .msg {
+  margin-top: 40px;
 }
 
 .groceries-list {
@@ -187,14 +271,15 @@ input[type="checkbox"] {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid var(--color-primary);
+  padding: 20px;
+  border-radius: 5px;
 
   .groceries-list__item {
     display: grid;
     grid-template-columns: 50px auto 80px;
-    grid-gap: 10px;
+    grid-gap: 20px;
     align-items: center;
-    border: 1px solid slateblue;
-    padding: 20px;
 
     .checkbox {
       height: 100%;
@@ -202,32 +287,19 @@ input[type="checkbox"] {
     }
 
     .label {
-      border: 1px solid slateblue;
-      background-color: lavender;
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-secondary);
       height: 100%;
-      border-radius: 2px;
+      border-radius: 5px;
       display: flex;
       align-items: center;
       padding: 5px 10px;
     }
-
-    .btn--delete {
-      border-radius: 2px;
-      transition: all 0.4s;
-      color: #fff;
-      background-color: crimson;
-      border: 2px solid crimson;
-      height: 100%;
-      font-size: 20px;
-
-      &:hover {
-        background-color: #fff;
-        color: crimson;
-      }
-    }
   }
 }
 
-.checkbox:checked ~ .label {
-  text-decoration: line-through;
+.msg {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
 }

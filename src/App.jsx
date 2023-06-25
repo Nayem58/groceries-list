@@ -1,8 +1,8 @@
 // layouts
 import Header from "./layouts/Header";
 import Block from "./layouts/Block";
-import List from "./layouts/List";
-import Form from "./layouts/Form";
+import List from "./components/List";
+import Form from "./components/Form";
 import Footer from "./layouts/Footer";
 
 // useState
@@ -87,7 +87,7 @@ function App() {
               handleDelete={handleDelete}
             />
           ) : (
-            <p className="text-center">Your List Is Empty</p>
+            <div className="text-center msg">Your List Is Empty</div>
           )}
         </Block>
       </main>
