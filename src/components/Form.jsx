@@ -1,6 +1,9 @@
+import { useRef } from "react";
 import { BsFillClipboardPlusFill } from "react-icons/bs";
 
 function Form({ newInput, setNewInput, handleSetNewInput }) {
+  const inputRef = useRef();
+
   return (
     <form className="form" onSubmit={handleSetNewInput}>
       <div className="wrapper">
@@ -14,13 +17,18 @@ function Form({ newInput, setNewInput, handleSetNewInput }) {
             name="add-item"
             id="add-item"
             placeholder="Item's name"
+            ref={inputRef}
             autoFocus
             required
             value={newInput}
             onChange={(e) => setNewInput(e.target.value)}
           />
         </div>
-        <button className="btn btn--add" aria-label="Add Item">
+        <button
+          className="btn btn--add"
+          aria-label="Add Item"
+          onClick={() => inputRef.current.focus()}
+        >
           <BsFillClipboardPlusFill />
         </button>
       </div>

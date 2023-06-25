@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search() {
+function Search({ search, setSearch }) {
   return (
     <form className="form">
       <div className="input-group">
@@ -12,7 +12,10 @@ function Search() {
           type="text"
           name="search"
           id="search"
+          role="searchbox"
           placeholder="Search item"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
     </form>

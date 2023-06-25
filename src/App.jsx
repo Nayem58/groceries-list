@@ -57,7 +57,10 @@ function App() {
     setAndSaveItems(listItems);
   };
 
-  // taking new inputs from the Form
+  // search item
+  const [search, setSearch] = useState("");
+
+  // adding new items
   const [newInput, setNewInput] = useState("");
 
   const handleSetNewInput = (e) => {
@@ -75,7 +78,7 @@ function App() {
       <Header headerTxt="Grocery List" />
       <main>
         <Block>
-          <Search />
+          <Search search={search} setSearch={setSearch} />
           <Form
             newInput={newInput}
             setNewInput={setNewInput}
@@ -83,7 +86,9 @@ function App() {
           />
           {items.length ? (
             <List
-              items={items}
+              items={items.filter((item) =>
+                item.item.toLowerCase().includes(search.toLowerCase())
+              )}
               handleChecked={handleChecked}
               handleDelete={handleDelete}
             />
