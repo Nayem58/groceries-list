@@ -3,6 +3,7 @@ import Header from "./layouts/Header";
 import Block from "./layouts/Block";
 import List from "./components/List";
 import Form from "./components/Form";
+import Search from "./components/Search";
 import Footer from "./layouts/Footer";
 
 // useState
@@ -74,8 +75,8 @@ function App() {
       <Header headerTxt="Grocery List" />
       <main>
         <Block>
+          <Search />
           <Form
-            className="mb-20px"
             newInput={newInput}
             setNewInput={setNewInput}
             handleSetNewInput={handleSetNewInput}

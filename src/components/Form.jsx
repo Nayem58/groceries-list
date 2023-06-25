@@ -1,8 +1,8 @@
 import { BsFillClipboardPlusFill } from "react-icons/bs";
 
-function Form({ className, newInput, setNewInput, handleSetNewInput }) {
+function Form({ newInput, setNewInput, handleSetNewInput }) {
   return (
-    <form className={`add-item-form ${className}`} onSubmit={handleSetNewInput}>
+    <form className="form" onSubmit={handleSetNewInput}>
       <div className="wrapper">
         <div className="input-group">
           <label htmlFor="add-item" className="label">
