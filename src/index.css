@@ -19,6 +19,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Rajdhani", sans-serif;
 }
 
 html {
@@ -27,11 +28,11 @@ html {
 
 body {
   height: 100vh;
-  font-family: "Rajdhani", sans-serif;
   font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 500;
 }
 
 #root {
@@ -46,7 +47,6 @@ footer {
   background-color: var(--color-primary);
   color: var(--color-white);
   text-align: center;
-  font-weight: 700;
   width: 100%;
   max-width: 600px;
   margin-left: auto;
@@ -56,15 +56,16 @@ footer {
 
 header {
   padding: 20px;
-  font-size: 4rem;
+  font-size: 6rem;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 footer {
   padding: 10px;
-}
-
-footer p {
-  font-size: 1.4rem;
+  font-weight: 500;
+  font-size: 2rem;
 }
 
 main {
@@ -133,6 +134,9 @@ input[type="checkbox"] {
   border: 2px solid;
   height: 100%;
   font-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn--delete {
@@ -233,6 +237,7 @@ input[type="checkbox"] {
     .label {
       display: inline-block;
       font-size: 1.6rem;
+      font-weight: 600;
       position: absolute;
       left: 20px;
       top: 0;
@@ -298,12 +303,13 @@ input[type="checkbox"] {
       display: flex;
       align-items: center;
       padding: 5px 10px;
+      font-weight: 600;
     }
   }
 }
 
 .msg {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 500;
   color: var(--color-secondary);
 }
