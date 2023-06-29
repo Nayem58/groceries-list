@@ -11,9 +11,7 @@ import { useState } from "react";
 
 function App() {
   const [items, setItems] = useState(
-    localStorage.getItem("groceryList")
-      ? JSON.parse(localStorage.getItem("groceryList"))
-      : []
+    JSON.parse(localStorage.getItem("groceryList")) || []
   );
 
   const setAndSaveItems = (newItems) => {
