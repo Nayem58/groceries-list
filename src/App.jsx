@@ -10,13 +10,29 @@ import Footer from "./layouts/Footer";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [items, setItems] = useState(
-    JSON.parse(localStorage.getItem("groceryList")) || []
-  );
+  const [items, setItems] = useState([]);
+  const [search, setSearch] = useState("");
+  const [newInput, setNewInput] = useState("");
+  const [fetchError, setFetchError] = useState(null);
+
+  const API_URL = "http://localhost:3500/items11111";
 
   useEffect(() => {
-    localStorage.setItem("groceryList", JSON.stringify(items));
-  }, [items]);
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw Error("Did not receive expected data");
+        const listItems = await response.json();
+        console.log(listItems);
+        setItems(listItems);
+        setFetchError(null);
+      } catch (error) {
+        setFetchError(error.message);
+      }
+    };
+
+    (async () => await fetchItems())();
+  }, []);
 
   const addItem = (newItem) => {
     const createNewItem = {
@@ -40,12 +56,6 @@ function App() {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
   };
-
-  // search item
-  const [search, setSearch] = useState("");
-
-  // adding new items
-  const [newInput, setNewInput] = useState("");
 
   const handleSetNewInput = (e) => {
     e.preventDefault();
@@ -82,6 +92,9 @@ function App() {
             <div className="text-center msg">Your List Is Empty</div>
           )}
         </Block>
+        {fetchError && (
+          <div className="text-center mb-10px">{`Error: ${fetchError}`}</div>
+        )}
       </main>
       <Footer listCount={items.length} />
     </>
