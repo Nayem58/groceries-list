@@ -14,22 +14,29 @@ function App() {
   const [search, setSearch] = useState("");
   const [newInput, setNewInput] = useState("");
   const [fetchError, setFetchError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = "http://localhost:3500/items11111";
+  const API_URL = "http://localhost:3500/items";
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const response = await fetch(API_URL);
-        if (!response.ok) throw Error("Did not receive expected data");
+        if (!response.ok) throw Error("Did not receive expected data!!");
         const listItems = await response.json();
-        console.log(listItems);
         setItems(listItems);
         setFetchError(null);
       } catch (error) {
         setFetchError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
+
+    // the following setTimeout is just for simulation as we are running from Rest API which might not take as much time as the real API server would take
+    // setTimeout(() => {
+    //   (async () => await fetchItems())();
+    // }, 2000);
 
     (async () => await fetchItems())();
   }, []);
@@ -80,23 +87,28 @@ function App() {
             setNewInput={setNewInput}
             handleSetNewInput={handleSetNewInput}
           />
-          {items.length ? (
-            <List
-              items={items.filter((item) =>
-                item.item.toLowerCase().includes(search.toLowerCase())
-              )}
-              handleChecked={handleChecked}
-              handleDelete={handleDelete}
-            />
-          ) : (
-            <div className="text-center text-light info">
-              Your List Is Empty
-            </div>
+          {isLoading && (
+            <div className="text-center text-light info">Loading...</div>
           )}
+          {fetchError && (
+            <div className="text-center text-danger info">{`Error: ${fetchError}`}</div>
+          )}
+          {!fetchError &&
+            !isLoading &&
+            (items.length ? (
+              <List
+                items={items.filter((item) =>
+                  item.item.toLowerCase().includes(search.toLowerCase())
+                )}
+                handleChecked={handleChecked}
+                handleDelete={handleDelete}
+              />
+            ) : (
+              <div className="text-center text-light info">
+                Your List Is Empty
+              </div>
+            ))}
         </Block>
-        {fetchError && (
-          <div className="text-center mb-10px text-danger">{`Error: ${fetchError}`}</div>
-        )}
       </main>
       <Footer listCount={items.length} />
     </>
