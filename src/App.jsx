@@ -6,19 +6,17 @@ import Form from "./components/Form";
 import Search from "./components/Search";
 import Footer from "./layouts/Footer";
 
-// useState
-import { useState } from "react";
+// useState, useEffect
+import { useState, useEffect } from "react";
 
 function App() {
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("groceryList")) || []
   );
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem("groceryList", JSON.stringify(newItems));
-    console.log(newItems);
-  };
+  useEffect(() => {
+    localStorage.setItem("groceryList", JSON.stringify(items));
+  }, [items]);
 
   const addItem = (newItem) => {
     const createNewItem = {
@@ -28,19 +26,19 @@ function App() {
     };
 
     const listItems = [...items, createNewItem];
-    setAndSaveItems(listItems);
+    setItems(listItems);
   };
 
   const handleChecked = (id) => {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
-    setAndSaveItems(listItems);
+    setItems(listItems);
   };
 
   const handleDelete = (id) => {
     const listItems = items.filter((item) => item.id !== id);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   };
 
   // search item
