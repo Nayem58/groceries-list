@@ -89,11 +89,13 @@ function App() {
               handleDelete={handleDelete}
             />
           ) : (
-            <div className="text-center msg">Your List Is Empty</div>
+            <div className="text-center text-light info">
+              Your List Is Empty
+            </div>
           )}
         </Block>
         {fetchError && (
-          <div className="text-center mb-10px">{`Error: ${fetchError}`}</div>
+          <div className="text-center mb-10px text-danger">{`Error: ${fetchError}`}</div>
         )}
       </main>
       <Footer listCount={items.length} />

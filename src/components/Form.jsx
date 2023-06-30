@@ -25,7 +25,7 @@ function Form({ newInput, setNewInput, handleSetNewInput }) {
           />
         </div>
         <button
-          className="btn btn--add"
+          className="btn btn--primary"
           aria-label="Add Item"
           onClick={() => inputRef.current.focus()}
         >

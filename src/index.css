@@ -1,3 +1,4 @@
+/* === root elements @index === */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,7 +13,7 @@
   --color-white: white;
   --color-primary: slateblue;
   --color-secondary: lavender;
-  --color-delete: crimson;
+  --color-danger: crimson;
 }
 
 * {
@@ -41,7 +42,95 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+/* ====== */
 
+/* === common-css @index === */
+/* == buttons == */
+.btn {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.4s;
+  color: var(--color-white);
+  border: 2px solid;
+  height: 100%;
+  font-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--danger {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-danger);
+  }
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+}
+/* ==== */
+
+/* == block == */
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* ==== */
+
+/* == alignment == */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: start;
+}
+
+.text-right {
+  text-align: end;
+}
+/* ==== */
+
+/* == spacing == */
+.py-50px {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.mt-10px {
+  margin-top: 10px;
+}
+
+.mb-10px {
+  margin-bottom: 10px;
+}
+
+.ml-10px {
+  margin-left: 10px;
+}
+
+.mr-10px {
+  margin-right: 10px;
+}
+/* ==== */
+/* ====== */
+
+/* === header, footer @index === */
 header,
 footer {
   background-color: var(--color-primary);
@@ -67,7 +156,9 @@ footer {
   font-weight: 500;
   font-size: 2rem;
 }
+/* ====== */
 
+/* === tags/elements @index === */
 main {
   width: 100%;
   max-width: 600px;
@@ -120,103 +211,9 @@ input[type="text"] {
 input[type="checkbox"] {
   border: 1px solid var(--color-primary);
 }
+/* ====== */
 
-.checkbox:checked ~ label {
-  text-decoration: line-through;
-}
-
-.btn {
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all 0.4s;
-  color: var(--color-white);
-  border: 2px solid;
-  height: 100%;
-  font-size: 2rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn--delete {
-  background-color: var(--color-delete);
-  border-color: var(--color-delete);
-
-  &:hover {
-    background-color: var(--color-white);
-    color: var(--color-delete);
-  }
-}
-
-.btn--add {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-
-  &:hover {
-    background-color: var(--color-white);
-    color: var(--color-primary);
-  }
-}
-
-.py-50px {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: start;
-}
-
-.text-right {
-  text-align: end;
-}
-
-.mt-10px {
-  margin-top: 10px;
-}
-
-.mb-10px {
-  margin-bottom: 10px;
-}
-
-.ml-10px {
-  margin-left: 10px;
-}
-
-.mr-10px {
-  margin-right: 10px;
-}
-
-.mt-2rem {
-  margin-top: 20px;
-}
-
-.mb-2rem {
-  margin-bottom: 20px;
-}
-
-.ml-2rem {
-  margin-left: 20px;
-}
-
-.mr-2rem {
-  margin-right: 20px;
-}
-
+/* === forms, inputs, buttons @index === */
 .form {
   width: 100%;
   max-width: 500px;
@@ -260,7 +257,7 @@ input[type="checkbox"] {
     }
   }
 
-  .btn--add {
+  .btn--primary {
     height: calc(100% - 16px);
     font-size: 3rem;
   }
@@ -271,10 +268,16 @@ input[type="checkbox"] {
 }
 
 .form + .groceries-list,
-.form + .msg {
+.form + .info {
   margin-top: 40px;
 }
 
+.checkbox:checked ~ label {
+  text-decoration: line-through;
+}
+/* ====== */
+
+/* === grocery list @index === */
 .groceries-list {
   width: 100%;
   max-width: 500px;
@@ -307,9 +310,19 @@ input[type="checkbox"] {
     }
   }
 }
+/* ====== */
 
-.msg {
-  font-size: 3rem;
-  font-weight: 500;
+/* === miscellaneous @index === */
+.text-light {
   color: var(--color-secondary);
 }
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.info {
+  font-size: 3rem;
+  font-weight: 500;
+}
+/* ====== */

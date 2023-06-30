@@ -15,7 +15,7 @@ function ListItem({ item, handleChecked, handleDelete }) {
         {item.item.toUpperCase()}
       </label>
       <button
-        className="btn btn--delete"
+        className="btn btn--danger"
         onClick={() => handleDelete(item.id)}
         aria-label={`Delete: ${item.item}`}
       >
