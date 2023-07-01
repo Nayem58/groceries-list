@@ -19,6 +19,16 @@
       "id": 4,
       "checked": false,
       "item": "mayo"
+    },
+    {
+      "id": 5,
+      "item": "Soup",
+      "checked": false
+    },
+    {
+      "id": 6,
+      "item": "Fried Rice",
+      "checked": false
     }
   ]
 }

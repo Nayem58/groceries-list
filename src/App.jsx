@@ -44,7 +44,7 @@ function App() {
     (async () => await fetchItems())();
   }, []);
 
-  const addItem = (newItem) => {
+  const addItem = async (newItem) => {
     const createNewItem = {
       id: items.length ? items[items.length - 1].id + 1 : 1,
       item: newItem,
@@ -53,6 +53,17 @@ function App() {
 
     const listItems = [...items, createNewItem];
     setItems(listItems);
+
+    const postOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(createNewItem),
+    };
+
+    const result = await apiRequest(API_URL, postOptions);
+    result && setFetchError(result);
   };
 
   const handleChecked = (id) => {
