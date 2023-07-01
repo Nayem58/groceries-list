@@ -64,8 +64,6 @@ function App() {
 
     const result = await apiRequest(API_URL, postOptions);
     result && setFetchError(result);
-    console.log(result);
-    console.log(fetchError);
   };
 
   const handleChecked = async (id) => {
@@ -85,13 +83,18 @@ function App() {
     const apiUrlWithId = `${API_URL}/${id}`;
     const result = await apiRequest(apiUrlWithId, updateOptions);
     result && setFetchError(result);
-    console.log(result);
-    console.log(fetchError);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
+
+    const deleteOptions = {
+      method: "DELETE",
+    };
+    const apiUrlWithId = `${API_URL}/${id}`;
+    const result = await apiRequest(apiUrlWithId, deleteOptions);
+    result && setFetchError(result);
   };
 
   const handleSetNewInput = (e) => {
