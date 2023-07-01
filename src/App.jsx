@@ -9,6 +9,9 @@ import Footer from "./layouts/Footer";
 // useState, useEffect
 import { useState, useEffect } from "react";
 
+// crud func
+import apiRequest from "./utils/apiRequest";
+
 function App() {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
