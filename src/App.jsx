@@ -64,13 +64,29 @@ function App() {
 
     const result = await apiRequest(API_URL, postOptions);
     result && setFetchError(result);
+    console.log(result);
+    console.log(fetchError);
   };
 
-  const handleChecked = (id) => {
+  const handleChecked = async (id) => {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(listItems);
+
+    const checkedItem = listItems.filter((item) => item.id === id);
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ checked: checkedItem[0].checked }),
+    };
+    const apiUrlWithId = `${API_URL}/${id}`;
+    const result = await apiRequest(apiUrlWithId, updateOptions);
+    result && setFetchError(result);
+    console.log(result);
+    console.log(fetchError);
   };
 
   const handleDelete = (id) => {
